@@ -68,7 +68,9 @@ function erpc_set_current_timestamp($name) {
 }
 
 function erpc_upload_url() {
-	return apply_filters('erpc_upload_url', wp_upload_dir()['baseurl'].'/erpc');	
+	$dir = wp_upload_dir();
+	$dir = $dir['baseurl'];
+	return apply_filters('erpc_upload_url', $dir.'/erpc');	
 }
 
 

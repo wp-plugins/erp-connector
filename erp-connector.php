@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ERP CONNECTOR
  * Description: Access to ERP systems ( Wf-Mag, CDN Optima, CDN XL, SubiektGT, Sage Symfonia, Hermes SQL, Corax, Navireo, Enova, PCBiznes, Polpress.pl, Faktury Express, Elisoft Faktury, Raks SQL, ODL, PolkaSQL, Fin7 )
- * Version: 1.0
+ * Version: 1.0.1
  * Author: AC SOFTWARE SP. Z O.O.
  * Author URI: http://www.acsoftware.pl
  * Author E-mail: p.zygmunt@acsoftware.pl
@@ -29,7 +29,9 @@ function erpc_plugin_dir() {
 }
 
 function erpc_upload_dir() {
-	return apply_filters('erpc_upload_dir', wp_upload_dir()['basedir'].'/erpc');
+	$dir = wp_upload_dir();
+	$dir = $dir['basedir'];
+	return apply_filters('erpc_upload_dir', $dir.'/erpc');
 }
 
 register_activation_hook( __FILE__, array( 'ERPC_Install', 'install' ) );
